@@ -150,15 +150,15 @@ void runGame() {
 
 void displayGameScene() {
   p.display();
-
+  
   for (Bullet b : bullets) {
     b.display();
   }
-
+  
   for (Enemy e : enemies) {
     e.display();
   }
-
+  
   displayUI();
 }
 

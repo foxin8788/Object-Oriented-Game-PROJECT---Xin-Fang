@@ -248,3 +248,55 @@ void mousePressed() {
     gameState = 0;
   }
 }
+
+void keyPressed() {
+  if (gameState == 2) {
+    if (key == 'w' || key == 'W') holdW = true;
+    if (key == 'a' || key == 'A') holdA = true;
+    if (key == 's' || key == 'S') holdS = true;
+    if (key == 'd' || key == 'D') holdD = true;
+    
+    // Press P to pause
+    if (key == 'p' || key == 'P') {
+      gameState = 3;
+    }
+  } 
+  // Press P again to continue
+  else if (gameState == 3) {
+    if (key == 'p' || key == 'P') {
+      gameState = 2;
+    }
+  }
+}
+
+void keyReleased() {
+  if (key == 'w' || key == 'W') holdW = false;
+  if (key == 'a' || key == 'A') holdA = false;
+  if (key == 's' || key == 'S') holdS = false;
+  if (key == 'd' || key == 'D') holdD = false;
+}
+
+void spawnEnemy() {
+  float ex, ey;
+  // Randomly select one side
+  int side = (int)random(4);
+
+  if (side == 0) {
+    ex = random(width);
+    ey = -20;
+  } 
+  else if (side == 1) {
+    ex = random(width);
+    ey = height + 20;
+  } 
+  else if (side == 2) {
+    ex = -20;
+    ey = random(height);
+  } 
+  else {
+    ex = width + 20;
+    ey = random(height);
+  }
+
+  enemies.add(new Enemy(ex, ey));
+}

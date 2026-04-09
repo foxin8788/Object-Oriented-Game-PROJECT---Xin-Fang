@@ -297,6 +297,6 @@ void spawnEnemy() {
     ex = width + 20;
     ey = random(height);
   }
-
+  
   enemies.add(new Enemy(ex, ey));
 }
